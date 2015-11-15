@@ -218,7 +218,9 @@ def newItem(category_id):
     if request.method == 'POST':
 
         image = request.files['photo']
-        image_filename = None
+        image_filename = "placeholder.png"
+
+        # Get image path if it's available
         if image and allowed_file(image.filename):
             image_filename = secure_filename(image.filename)
             image.save(os.path.join(
@@ -227,7 +229,7 @@ def newItem(category_id):
 
         new_item = Item(
             name=request.form['item'],
-            image=image_filename,
+            image="uploads/" + image_filename,
             description=request.form['description'],
             notes=request.form['notes'],
             category_id=category_id,
@@ -625,8 +627,12 @@ def getItemDetailsXML(category_id, item_id):
     resp.headers['Content-type'] = 'text/xml; charset=utf-8'
     return resp    
 
-# Main (place at the end of the code)
-#if __name__ == '__main__':
-app.secret_key = 'super_secret_key'
-app.debug = True
-#app.run(host='0.0.0.0', port=5000)
+# For local deployment
+if __name__ == '__main__':
+    app.secret_key = 'super_secret_key'
+    app.debug = True
+    app.run(host='0.0.0.0', port=5000)
+
+# For Heroku deployment
+# app.secret_key = 'super_secret_key'
+# app.debug = True
