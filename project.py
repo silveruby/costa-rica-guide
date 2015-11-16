@@ -229,7 +229,7 @@ def newItem(category_id):
 
         new_item = Item(
             name=request.form['item'],
-            image="uploads/" + image_filename,
+            image=image_filename,
             description=request.form['description'],
             notes=request.form['notes'],
             category_id=category_id,
@@ -313,9 +313,10 @@ def editItem(category_id, item_id):
         if image_filename and image_filename != edit_item.image:
 
             # Delete old image from OS
-            os.remove(os.path.join(
-                app.config['UPLOAD_FOLDER'],
-                edit_item.image))
+            if(edit_item.image != "placeholder.png"):
+                os.remove(os.path.join(
+                    app.config['UPLOAD_FOLDER'],
+                    edit_item.image))
 
             # Save new image to os
             edit_item.image = image_filename
@@ -628,11 +629,11 @@ def getItemDetailsXML(category_id, item_id):
     return resp    
 
 # For local deployment
-# if __name__ == '__main__':
-#     app.secret_key = 'super_secret_key'
-#     app.debug = True
-#     app.run(host='0.0.0.0', port=5000)
+if __name__ == '__main__':
+    app.secret_key = 'super_secret_key'
+    app.debug = True
+    app.run(host='0.0.0.0', port=5000)
 
 # For Heroku deployment
-app.secret_key = 'super_secret_key'
-app.debug = True
+# app.secret_key = 'super_secret_key'
+# app.debug = True
