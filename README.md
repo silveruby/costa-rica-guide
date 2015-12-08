@@ -1,4 +1,4 @@
-# Catalog App
+# Ruby's Costa Rica Guide
 
 ---
 
