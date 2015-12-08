@@ -30,9 +30,9 @@ The app have CRUD functionalities for Category, Item and Comment. Here are some 
 4. Only authorized users can create, edit and delete Categories and Items. 
 5. You can **update the list of authorized users on 'authorized_users.json' file**
 
-## Furture plan
+## Heroku Deployment
 
-The app will be deployed to Heroku in a few weeks... 
+Link: [http://rubyscostaricaguide.heroku.com/](http://rubyscostaricaguide.heroku.com/)
 
 
 
