@@ -1,4 +1,7 @@
-# Ruby's Costa Rica Guide
+Project: Ruby's Costa Rica Guide
+
+Link: [http://rubyscostaricaguide.heroku.com/](http://rubyscostaricaguide.heroku.com/)
+
 
 ---
 
@@ -10,7 +13,7 @@ The task was to create a catalog web application that handles database CRUD func
 
 I used the Flask framework, Boostrap, SQLAlchemy and Facebook login for this project.  
 
-Since I am traveling in Costa Rica at the time of making this application, I've designed it as a little online Costa Rica guide to keep track of my travel experiences here. 
+I built this site while I was traveling in Costa Rica so I've made it as a little online Costa Rica guide to keep track of my travel experiences. 
 
 ## How to run the application
 
@@ -29,10 +32,6 @@ The app have CRUD functionalities for Category, Item and Comment. Here are some 
 3. Users can edit or delete comments belong to them, but they cannot edit or delete comments belong to other users. 
 4. Only authorized users can create, edit and delete Categories and Items. 
 5. You can **update the list of authorized users on 'authorized_users.json' file**
-
-## Heroku Deployment
-
-Link: [http://rubyscostaricaguide.heroku.com/](http://rubyscostaricaguide.heroku.com/)
 
 
 
