@@ -1,6 +1,6 @@
 Project: Ruby's Costa Rica Guide
 
-Link: [http://rubyscostaricaguide.heroku.com/](http://rubyscostaricaguide.heroku.com/)
+Link: [http://104.131.176.111//](http://104.131.176.111/)
 
 ---
 
@@ -12,11 +12,7 @@ The task was to create a catalog web application that handles database CRUD func
 
 I used the Flask framework, Boostrap, SQLAlchemy and Facebook login for this project.  
 
-<<<<<<< HEAD
-Since I am traveling in Costa Rica at the time of making this application, I've designed it as a little online Costa Rica guide to keep track of my travel experiences here. 
-=======
 I built this site while I was traveling in Costa Rica so I've made it as a little online Costa Rica guide to keep track of my travel experiences. 
->>>>>>> 2c351f667a6f13d45b3dcb988bea0dce5cb6e980
 
 ## How to run the application
 
