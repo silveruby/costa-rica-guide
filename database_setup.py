@@ -92,7 +92,7 @@ class Comment(Base):
 
 # Connect to Database 
 #engine = create_engine('sqlite:///rubyscostarica.db')
-#engine = create_engine('postgres://pdiklqkuhjdrnx:upgNacOIGqj7Wn45DtVJygSMB6@ec2-54-197-253-142.compute-1.amazonaws.com:5432/d28h82c038hd3s')
-engine = create_engine('postgresql://catalog:costarica@localhost/catalogdb')
+engine = create_engine('postgres://pdiklqkuhjdrnx:upgNacOIGqj7Wn45DtVJygSMB6@ec2-54-197-253-142.compute-1.amazonaws.com:5432/d28h82c038hd3s')
+#engine = create_engine('postgresql://catalog:costarica@localhost/catalogdb')
 
 Base.metadata.create_all(engine)

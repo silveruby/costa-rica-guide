@@ -112,15 +112,21 @@ def allowed_file(filename):
 
 def save_file(image, filename):
     # upload image
-    image.save(os.path.join(
-                app.config['UPLOAD_FOLDER'],
-                filename))
+    try:
+        image.save(os.path.join(
+                    app.config['UPLOAD_FOLDER'],
+                    filename))
+    except:
+        print "could not save file"
 
 def delete_file(filename):  
-    # delete image
-    os.remove(os.path.join(
-        app.config['UPLOAD_FOLDER'],
-        filename))
+    # upload image
+    try:    
+        os.remove(os.path.join(
+            app.config['UPLOAD_FOLDER'],
+            filename))
+    except:
+        print "could not delete file"
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
@@ -323,7 +329,7 @@ def editItem(category_id, item_id):
             image_filename = secure_filename(image.filename)
 
         # Check and update image path
-        if image_filename and image_filename != edit_item.image:
+        if image_filename != edit_item.image:
 
             # Delete old image from OS
             if(edit_item.image != "placeholder.png"):
