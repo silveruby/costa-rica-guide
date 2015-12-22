@@ -34,7 +34,10 @@ class Category(Base):
     name = Column(String(250), nullable=False)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
+<<<<<<< HEAD
     item = relationship('Item', cascade="all, delete-orphan")
+=======
+>>>>>>> 2c351f667a6f13d45b3dcb988bea0dce5cb6e980
 
     # Serialize
     @property
@@ -51,13 +54,21 @@ class Item(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
     image = Column(String(250))
+<<<<<<< HEAD
     description = Column(String(1000))
     notes = Column(String(1000))
+=======
+    description = Column(String(250))
+    notes = Column(String(250))
+>>>>>>> 2c351f667a6f13d45b3dcb988bea0dce5cb6e980
     category_id = Column(Integer, ForeignKey('category.id'))
     category = relationship(Category)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
+<<<<<<< HEAD
     comment = relationship('Comment', cascade="all, delete-orphan")
+=======
+>>>>>>> 2c351f667a6f13d45b3dcb988bea0dce5cb6e980
 
     # Serialize
     @property
@@ -90,6 +101,7 @@ class Comment(Base):
             'text': self.text
         }
 
+<<<<<<< HEAD
 # Toggle between local and production
 ENV = "PROD" 
 
@@ -98,5 +110,8 @@ if ENV == "LOCAL":
     engine = create_engine('sqlite:///rubyscostarica.db')
 else:
     engine = create_engine('postgres://pdiklqkuhjdrnx:upgNacOIGqj7Wn45DtVJygSMB6@ec2-54-197-253-142.compute-1.amazonaws.com:5432/d28h82c038hd3s')
+=======
+engine = create_engine('sqlite:///rubyscostarica.db')
+>>>>>>> 2c351f667a6f13d45b3dcb988bea0dce5cb6e980
 
 Base.metadata.create_all(engine)
