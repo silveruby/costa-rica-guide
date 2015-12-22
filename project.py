@@ -26,7 +26,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, Item, User, Comment
 
-# Setup file imports
+# Setup upload files
 from werkzeug import secure_filename
 from flask import send_from_directory
 
@@ -34,9 +34,15 @@ from flask import send_from_directory
 UPLOAD_FOLDER = 'static/uploads/'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
+# Toggle between local and production
+ENV = "PROD" 
+
 # Connect to Database
-#engine = create_engine('sqlite:///rubyscostarica.db')
-engine = create_engine('postgres://pdiklqkuhjdrnx:upgNacOIGqj7Wn45DtVJygSMB6@ec2-54-197-253-142.compute-1.amazonaws.com:5432/d28h82c038hd3s')
+if ENV == "LOCAL":
+    engine = create_engine('sqlite:///rubyscostarica.db')
+else:
+    engine = create_engine('postgres://pdiklqkuhjdrnx:upgNacOIGqj7Wn45DtVJygSMB6@ec2-54-197-253-142.compute-1.amazonaws.com:5432/d28h82c038hd3s')
+
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 db_session = DBSession()
@@ -105,12 +111,22 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
+def save_file(image, filename):
+    # upload image for local ENV
+    image.save(os.path.join(
+                app.config['UPLOAD_FOLDER'],
+                filename))
+
+def delete_file(filename):  
+    # upload image for local ENV    
+    os.remove(os.path.join(
+        app.config['UPLOAD_FOLDER'],
+        filename))
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
-
+                           filename)
 
 # Routers
 @app.route('/')
@@ -223,9 +239,7 @@ def newItem(category_id):
         # Get image path if it's available
         if image and allowed_file(image.filename):
             image_filename = secure_filename(image.filename)
-            image.save(os.path.join(
-                app.config['UPLOAD_FOLDER'],
-                image_filename))
+            save_file(image, image.filename)
 
         new_item = Item(
             name=request.form['item'],
@@ -314,15 +328,11 @@ def editItem(category_id, item_id):
 
             # Delete old image from OS
             if(edit_item.image != "placeholder.png"):
-                os.remove(os.path.join(
-                    app.config['UPLOAD_FOLDER'],
-                    edit_item.image))
+                delete_file(edit_item.image)
 
             # Save new image to os
             edit_item.image = image_filename
-            image.save(os.path.join(
-                app.config['UPLOAD_FOLDER'],
-                image_filename))
+            save_file(image, image_filename)
 
         # Update database
         db_session.add(edit_item)
@@ -357,7 +367,8 @@ def deleteItem(category_id, item_id):
     if request.method == 'POST':
 
         # Delete image from OS
-        os.remove(os.path.join(app.config['UPLOAD_FOLDER'], delete_item.image))
+        if(delete_item.image != "placeholder.png"):
+            delete_file(delete_item.image)
 
         # Delete from database
         db_session.delete(delete_item)
@@ -629,11 +640,12 @@ def getItemDetailsXML(category_id, item_id):
     return resp    
 
 # For local deployment
-# if __name__ == '__main__':
-#     app.secret_key = 'super_secret_key'
-#     app.debug = True
-#     app.run(host='0.0.0.0', port=5000)
-
-# For Heroku deployment
-app.secret_key = 'super_secret_key'
-app.debug = True
+if ENV == "LOCAL":
+    if __name__ == '__main__':
+        app.secret_key = 'super_secret_key'
+        app.debug = True
+        app.run(host='0.0.0.0', port=5000)
+else:
+    # For Heroku deployment
+    app.secret_key = 'super_secret_key'
+    app.debug = True

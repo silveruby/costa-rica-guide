@@ -90,7 +90,13 @@ class Comment(Base):
             'text': self.text
         }
 
-#engine = create_engine('sqlite:///rubyscostarica.db')
-engine = create_engine('postgres://pdiklqkuhjdrnx:upgNacOIGqj7Wn45DtVJygSMB6@ec2-54-197-253-142.compute-1.amazonaws.com:5432/d28h82c038hd3s')
+# Toggle between local and production
+ENV = "PROD" 
+
+# Connect to Database 
+if ENV == "LOCAL":
+    engine = create_engine('sqlite:///rubyscostarica.db')
+else:
+    engine = create_engine('postgres://pdiklqkuhjdrnx:upgNacOIGqj7Wn45DtVJygSMB6@ec2-54-197-253-142.compute-1.amazonaws.com:5432/d28h82c038hd3s')
 
 Base.metadata.create_all(engine)
