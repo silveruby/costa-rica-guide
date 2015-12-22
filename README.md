@@ -1,4 +1,6 @@
-# Catalog App
+Project: Ruby's Costa Rica Guide
+
+Link: [http://rubyscostaricaguide.heroku.com/](http://rubyscostaricaguide.heroku.com/)
 
 ---
 
@@ -42,10 +44,6 @@ The app have CRUD functionalities for Category, Item and Comment. Here are some 
 	http://localhost:5000/category/XML
 	http://localhost:5000/category<category_id>/item/XML
 	http://localhost:5000/category/<category_id>/item/<item_id>/XML
-
-## Furture plan
-
-The app will be deployed to Heroku in a few weeks... 
 
 
 
