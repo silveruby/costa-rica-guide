@@ -2,10 +2,6 @@ Project: Ruby's Costa Rica Guide
 
 Link: [http://rubyscostaricaguide.heroku.com/](http://rubyscostaricaguide.heroku.com/)
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2c351f667a6f13d45b3dcb988bea0dce5cb6e980
 ---
 
 ## Introduction
@@ -40,9 +36,7 @@ The app have CRUD functionalities for Category, Item and Comment. Here are some 
 4. Only authorized users can create, edit and delete Categories and Items. 
 5. You can **update the list of authorized users on 'authorized_users.json' file**
 
-<<<<<<< HEAD
 ## API End points
-
 
 ### A. JSON
 	http://localhost:5000/category/JSON
@@ -54,7 +48,5 @@ The app have CRUD functionalities for Category, Item and Comment. Here are some 
 	http://localhost:5000/category<category_id>/item/XML
 	http://localhost:5000/category/<category_id>/item/<item_id>/XML
 
-=======
->>>>>>> 2c351f667a6f13d45b3dcb988bea0dce5cb6e980
 
 
