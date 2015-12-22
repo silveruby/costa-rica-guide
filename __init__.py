@@ -238,7 +238,7 @@ def newItem(category_id):
         # Get image path if it's available
         if image and allowed_file(image.filename):
             image_filename = secure_filename(image.filename)
-            save_file(image, image.filename)
+            save_file(image, image_filename)
 
         new_item = Item(
             name=request.form['item'],
