@@ -231,6 +231,7 @@ def deleteCategory(category_id):
 		db_session.delete(delete_category)
 		for item in delete_items:
 			db_session.delete(item)
+			delete_file(item.image)
 		db_session.commit()
 		flash(
 			'Category ' +
