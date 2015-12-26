@@ -133,7 +133,7 @@ def delete_file(filename):
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
 	try:
-    		return send_from_directory(app.config['UPLOAD_FOLDER'],
+    	return send_from_directory(app.config['UPLOAD_FOLDER'],
                            filename)
 	except Exception as error:
 		print "cannot find file"
@@ -334,16 +334,16 @@ def editItem(category_id, item_id):
         if image and allowed_file(image.filename):
             image_filename = secure_filename(image.filename)
 
-        # Check and update image path
-        if image_filename != edit_item.image:
+            # Check and update image path
+            if image_filename != edit_item.image:
 
-            # Delete old image from OS
-            if(edit_item.image != "placeholder.png"):
-                delete_file(edit_item.image)
+                # Delete old image from OS
+                if edit_item.image != "placeholder.png":
+                    delete_file(edit_item.image)
 
-            # Save new image to os
-            edit_item.image = image_filename
-            save_file(image, image_filename)
+                # Save new image to os
+                edit_item.image = image_filename
+                save_file(image, image_filename)
 
 
         # Update database
