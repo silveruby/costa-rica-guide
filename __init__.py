@@ -31,7 +31,7 @@ from werkzeug import secure_filename
 from flask import send_from_directory
 
 # Setup file upload folder
-UPLOAD_FOLDER = 'static/uploads/'
+UPLOAD_FOLDER = '/var/www/catalog/catalog/static/uploads/'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 # Toggle between local and production
@@ -116,8 +116,9 @@ def save_file(image, filename):
         image.save(os.path.join(
                     app.config['UPLOAD_FOLDER'],
                     filename))
-    except:
+    except Exception as error:
         print "could not save file"
+	print error
 
 def delete_file(filename):  
     # upload image
@@ -125,13 +126,18 @@ def delete_file(filename):
         os.remove(os.path.join(
             app.config['UPLOAD_FOLDER'],
             filename))
-    except:
+    except Exception as error:
         print "could not delete file"
+	print error
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
+	try:
+    		return send_from_directory(app.config['UPLOAD_FOLDER'],
                            filename)
+	except Exception as error:
+		print "cannot find file"
+		print error
 
 # Routers
 @app.route('/')
