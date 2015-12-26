@@ -132,16 +132,16 @@ def delete_file(filename):
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
-	try:
+    try:
         file_path = send_from_directory(app.config['UPLOAD_FOLDER'], 
-                                    filename)
+                                        filename)
 
         print "file path"
         print file_path
 
         if !file_path:
             file_path = send_from_directory(app.config['UPLOAD_FOLDER'], 
-                                    'placeholder.png')
+                                            'placeholder.png')
 
         return file_path
 
