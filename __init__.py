@@ -139,7 +139,7 @@ def uploaded_file(filename):
 		print "file path"
 		print file_path
 
-		if !file_path:
+		if not file_path:
 			file_path = send_from_directory(app.config['UPLOAD_FOLDER'], 
 											'placeholder.png')
 
