@@ -118,7 +118,7 @@ def save_file(image, filename):
 					filename))
 	except Exception as error:
 		print "could not save file"
-	print error
+		print error
 
 def delete_file(filename):  
 	# upload image
