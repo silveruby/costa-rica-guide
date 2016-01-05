@@ -8,19 +8,19 @@ Name: Server Setup Instructions
 	
 2. Move private key to home directory .ssh
 		
-		$ mv ~/Downloads/udacity_key.rsa ~/.ssh/
+		$ mv ~/Downloads/costarica_key.rsa ~/.ssh/
 	
 3. Update permission
 	
-		$ chmod 600 ~/.ssh/udacity_key.rsa
+		$ chmod 600 ~/.ssh/costarica_key.rsa
 		
 4. Login as grader via port 2200
 	
-		$ ssh -i ~/.ssh/udacity_key.rsa grader@52.34.126.189 -p 2200
+		$ ssh -i ~/.ssh/costarica_key.rsa ruby@104.131.176.111 -p 2200
 
 5. URL for web app
 
-		http://52.34.126.189/
+		http://104.131.176.111/
 
 ## 2. Installation and configuration
 	
