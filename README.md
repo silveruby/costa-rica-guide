@@ -4,6 +4,7 @@ Link: [http://104.131.176.111/][host]
 
 [host]:http://104.131.176.111/
 [github]:https://github.com/silveruby/costa-rica-guide
+[server_setup]:https://github.com/silveruby/costa-rica-guide/blob/master/server_setup.md
 ---
 
 ## Introduction
@@ -47,8 +48,7 @@ The app have CRUD functionalities for Category, Item and Comment. Here are some 
 ## How to run application
 
 1. **Source:** Download files from [github repository][github]
-2. **Environment:** You'll need to have SQLAlchemy, Flask and oauth2client on your server. In fact, check imports in the start of file project.py for full list. 
+2. **Environment:** You'll need to have SQLAlchemy, Flask and oauth2client on your server. In fact, checkout [server_setup.md][server_setup] for detailed instruction on how to setup the server. 
 3. **Database:** Database can be set up by running 'python database_setup.py'
 4. **Start:** Once you've completed step 1, 2 and 3, then you can run 'python \__init__.py' to start the application
 5. **Test:** Open your favorite browser and test the app
-
